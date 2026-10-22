@@ -1,6 +1,7 @@
 package servicios;
-
 import cursos.Curso;
+import cursos.CursoElectivo;
+import cursos.CursoNivelatorio;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,16 @@ public class Recomendador {
      * La lista puede estar vacía si no hay cursos disponibles.
      */
     public List<Curso> recomendar(HistorialAcademico historial) {
-        // TODO: implementar
-        return new ArrayList<>();
+        List<Curso> recomendados = new ArrayList<>();
+        boolean buenPromedio = historial.promedio() >= 4.0;
+
+        for (Curso c : historial.getEstudiante().getInscritos()) {
+            if (buenPromedio && c instanceof CursoElectivo) {
+                recomendados.add(c);
+            } else if (!buenPromedio && c instanceof CursoNivelatorio) {
+                recomendados.add(c);
+            }
+        }
+        return recomendados;
     }
 }

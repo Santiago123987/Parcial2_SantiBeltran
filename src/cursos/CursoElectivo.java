@@ -5,9 +5,7 @@ package cursos;
  */
 public class CursoElectivo extends Curso {
 
-    public CursoElectivo(String codigo, String nombre, int creditos) {
-        super(codigo, nombre, creditos);
-    }
+    public CursoElectivo(String codigo, String nombre, int creditos) {super(codigo, nombre, creditos);}
 
     /**
      * TODO estudiante:
@@ -16,7 +14,6 @@ public class CursoElectivo extends Curso {
      */
     @Override
     public double dificultadEsperada() {
-        // TODO: implementar
-        return 0;
+        return 1.0 * getCreditos();
     }
 }

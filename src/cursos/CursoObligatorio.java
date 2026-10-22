@@ -16,7 +16,6 @@ public class CursoObligatorio extends Curso {
      */
     @Override
     public double dificultadEsperada() {
-        // TODO: implementar
-        return 0;
+        return 1.5 * getCreditos();
     }
 }

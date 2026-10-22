@@ -15,9 +15,9 @@ public class PlanEstudios {
     public PlanEstudios(String nombre) {
         this.nombre = nombre;
         this.cursos = new ArrayList<>();
-        // TODO: crear los cursos del plan aquí dentro
-        // Ejemplo esperado: agregar 3 cursos (obligatorio, electivo, nivelatorio)
-        // usando el método privado agregarCurso(...).
+        agregarCurso(new CursoObligatorio("OBL101", "Cálculo integral", 4));
+        agregarCurso(new CursoElectivo("ELE101", "Estructura de Datos", 3));
+        agregarCurso(new CursoNivelatorio("NIV101", "Lógica Computacional", 2));
     }
 
     /**
@@ -25,7 +25,7 @@ public class PlanEstudios {
      * Solo el plan puede crear sus cursos (composición).
      */
     private void agregarCurso(Curso curso) {
-        // TODO: implementar
+        cursos.add(curso);
     }
 
     /**
@@ -33,8 +33,14 @@ public class PlanEstudios {
      * Retorna 0 si el plan no tiene cursos.
      */
     public double dificultadPromedio() {
-        // TODO: implementar
-        return 0;
+        if (cursos.isEmpty()) {
+            return 0;
+        }
+        double suma = 0;
+        for (Curso c : cursos) {
+            suma += c.dificultadEsperada();
+        }
+        return suma / cursos.size();
     }
 
     public String getNombre() { return nombre; }
